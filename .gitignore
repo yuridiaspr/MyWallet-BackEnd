@@ -102,9 +102,3 @@ dist
 
 # TernJS port file
 .tern-port
-
-
-/src/routes/wallet.routes.js
-/src/wallet.controller.js
-/src/models/posts.model.js
-/src/controllers/wallet.controller.js

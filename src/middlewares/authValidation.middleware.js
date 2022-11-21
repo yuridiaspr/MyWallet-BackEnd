@@ -5,7 +5,7 @@ export async function authValidation(req, res, next) {
   const token = authorization?.replace("Bearer ", "");
 
   if (!token) {
-    return res.sendStatus(401);
+    return res.status(401).send("Você não está logado!");
   }
 
   try {
@@ -13,7 +13,7 @@ export async function authValidation(req, res, next) {
     const user = await usersCollection.findOne({ _id: session?.userId });
 
     if (!user) {
-      return res.sendStatus(401);
+      return res.status(401).send("Você precisa logar!");
     }
 
     req.user = user;
@@ -22,7 +22,6 @@ export async function authValidation(req, res, next) {
     console.log(err);
     return res.sendStatus(500);
   }
-
 
   next();
 }
